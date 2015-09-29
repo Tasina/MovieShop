@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieShopDAL
+namespace MovieStore.Models
 {
     public class Customer
     {

@@ -8,20 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using MovieShopDAL;
 using MovieStore.Models;
-using MovieShopDAL.Repositories;
+using MovieShopDAL.Repositories.Impl;
 
 namespace MovieShopUI.Controllers
 {
     public class MoviesController : Controller
     {
         //private MovieShopDBContext db = new MovieShopDBContext();
-        IRepository<Movie> MovieRepo = new MovieRepository();
+        //IRepository<Movie> MovieRepo = new MovieRepository();
+        DALFacade df = new DALFacade();
 
         // GET: Movies
         public ActionResult Index()
         {
             //var movies = db.Movies.Include(m => m.Genre);
-            var movies = MovieRepo.GetAll();
+            var movies = df.MovieRepository.GetAll();
             return View(movies.ToList());
         }
 

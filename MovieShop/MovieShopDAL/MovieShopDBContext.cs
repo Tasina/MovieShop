@@ -20,7 +20,7 @@ namespace MovieShopDAL
         }
 
         public System.Data.Entity.DbSet<MovieStore.Models.Movie> Movies { get; set; }
-
         public System.Data.Entity.DbSet<MovieStore.Models.Genre> Genres { get; set; }
+        public System.Data.Entity.DbSet<MovieStore.Models.Customer> Customers { get; set; }
     }
 }
