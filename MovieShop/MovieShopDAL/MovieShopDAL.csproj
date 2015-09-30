@@ -49,17 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
+    <Compile Include="BE\Customer.cs" />
     <Compile Include="DALFacade.cs" />
     <Compile Include="DBInitializer.cs" />
-    <Compile Include="Genre.cs" />
+    <Compile Include="BE\Genre.cs" />
     <Compile Include="Repositories\Impl\CustomerRepository.cs" />
     <Compile Include="Repositories\Impl\GenreRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Movie.cs" />
+    <Compile Include="BE\Movie.cs" />
     <Compile Include="MovieShopDBContext.cs" />
     <Compile Include="MovieShopDBInitializer.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="BE\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Impl\MovieRepository.cs" />
   </ItemGroup>

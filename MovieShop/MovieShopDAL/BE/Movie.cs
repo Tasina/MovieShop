@@ -9,7 +9,6 @@ namespace MovieStore.Models
 {
     public class Movie
     {
-        [ScaffoldColumn(false)]
         public int MovieId { get; set; }
         [Required(ErrorMessage = "A Title is required!")]
         public string Title { get; set; }

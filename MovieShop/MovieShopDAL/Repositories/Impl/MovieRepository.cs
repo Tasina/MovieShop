@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,9 +55,12 @@ namespace MovieShopDAL.Repositories.Impl
             using (var db = new MovieShopDBContext())
             {
                 //return db.Movies.Include(a => a.Genre).Include(g => g.Order).Tolist();
-                //return db.Movies.Include(a => a.Genre);
 
-                return db.Movies.ToList();
+                //eager loading
+                return db.Movies.Include(a => a.Genre).ToList();
+
+                //leasy loading
+                //return db.Movies.ToList();
             }
         }
 
