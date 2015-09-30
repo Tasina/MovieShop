@@ -8,6 +8,8 @@ namespace MovieStore.Models
 {
     public class Genre
     {
+        //[Display(Name="Genre")]
+        //[StringLength(20,ErrorMessage = "Maks 20 tegn")]
         public int GenreId { get; set; }
         [Required(ErrorMessage ="A Genre Title is required!")]
         public string Name { get; set; }
