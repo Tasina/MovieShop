@@ -10,6 +10,7 @@ namespace MovieShopDAL
 {
     public class DALFacade
     {
+        // test
         System.Data.Entity.SqlServer.SqlProviderServices
             ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 
