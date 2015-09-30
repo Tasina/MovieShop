@@ -14,6 +14,7 @@ namespace MovieStore.Models
         public int GenreId { get; set; }
         public string Title { get; set; }
         [Required]
+        [DataType(DataType.Date)]
         public DateTime Year { get; set; }
         [Required(ErrorMessage = "Price is required")]
         [Range(1, 100,
