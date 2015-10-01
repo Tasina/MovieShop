@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div>
+    <p>
+        @Html.DropDownList("GenreList", (SelectList)ViewBag.GenreList, "All", new { onchange = "JavaScript:this.form.sumbit()" })
+    </p>
+</div>
+
 <table class="table">
     <tr>
         <th>

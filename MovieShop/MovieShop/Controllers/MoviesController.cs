@@ -18,11 +18,20 @@ namespace MovieShopUI.Controllers
         IRepository<Movie> MovieRepo = new MovieRepository();
         IRepository<Genre> GenreRepo = new GenreRepository();
         // GET: Movies
-        public ActionResult Index()
+        public ActionResult Index(string GenreList)
         {
             //var movies = db.Movies.Include(m => m.Genre);
             var movies = MovieRepo.GetAll();
-            return View(movies.ToList());
+            ViewBag.GenreList = new SelectList(GenreRepo.GetAll().OrderBy(g => g.Name).Select(g =>g.Name));
+            if (string.IsNullOrEmpty(GenreList))
+            {
+                return View(movies.ToList());
+            }
+            else
+            {
+                return View(movies.Where(a => a.Genre.Name == GenreList));
+            }
+            
         }
 
         // GET: Movies/Details/5
