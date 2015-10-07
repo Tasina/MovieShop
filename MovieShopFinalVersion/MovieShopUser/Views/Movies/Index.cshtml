@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MovieShopDAL.BE.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/MyContent/imagessheet.css" />
+
+    <style>
+        div.voffset2 {
+            margin-top: 30px;
+        }
+
+        #MyCover {
+            height: 340px;
+            width: 255px;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.DropDownList("GenreList",
+        (SelectList)ViewBag.GenreList, "All",
+        new { onchange = "javascript:this.form.submit()" })
+    </p>
+}
+
+
+
+
+<h2><i>Movies</i></h2>
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 voffset2">
+
+        @if (item.ImageUrl.Count() < 1)
+        { <div class="hovereffect">
+            <img class="img-responsive" id="MyCover" src="~/Content/Images/no.gif" alt="">
+            <div class="overlay">
+                <h2>@item.Title</h2>
+                <a class="info" href='@Url.Action("Details", "Movies", new { id = item.MovieId })'><strong>Details</strong></a>
+                <a class="info" href="" style="background-color:limegreen;"><strong>BUY</strong></a>
+            </div>
+        </div>}
+        else
+        {
+            <div class="hovereffect">
+                <img class="img-responsive" id="MyCover" src="@item.ImageUrl" alt="">
+                <div class="overlay">
+                    <h2>@item.Title</h2>
+                    <a class="info" href='@Url.Action("Details", "Movies", new { id = item.MovieId })'><strong>Details</strong></a>
+                    <a class="info" href="" style="background-color:limegreen;"><strong>BUY</strong></a>
+                </div>
+            </div>
+        }
+
+    </div>
+}
+
