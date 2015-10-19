@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using MovieShopDAL;
 using MovieShopDAL.Repositories;
@@ -12,10 +7,8 @@ using MovieShopDAL.BE;
 
 namespace MovieShopUI.Controllers
 {
-
     public class MoviesController : Controller
     {
-        //private MovieShopDBContext db = new MovieShopDBContext();
         private IRepository<Movie> movieRepo = new DALFacade().MovieRepository;
         private IRepository<Genre> genreRepo = new DALFacade().GenreRepository;
 
@@ -38,10 +31,6 @@ namespace MovieShopUI.Controllers
         // GET: Movies/Details/5
         public ActionResult Details(int id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
             Movie movie = movieRepo.Get(id);
             if (movie == null)
             {
@@ -65,7 +54,8 @@ namespace MovieShopUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MovieId,GenreId,Title,Year,Price,ImageUrl,TrailerUrl")] Movie movie, string Command)
         {
-            if(Command == "Create") {
+            if (Command == "Create")
+            {
 
                 if (ModelState.IsValid)
                 {
@@ -73,7 +63,7 @@ namespace MovieShopUI.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            else if(Command == "Back")
+            if (Command == "Back")
             {
                 return RedirectToAction("Index");
             }
@@ -115,10 +105,6 @@ namespace MovieShopUI.Controllers
         // GET: Movies/Delete/5
         public ActionResult Delete(int id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
             Movie movie = movieRepo.Get(id);
             if (movie == null)
             {
@@ -133,7 +119,6 @@ namespace MovieShopUI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             movieRepo.Remove(id);
-
             return RedirectToAction("Index");
         }
 
@@ -145,5 +130,6 @@ namespace MovieShopUI.Controllers
         //    }
         //    base.Dispose(disposing);
         //}
+
     }
 }

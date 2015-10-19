@@ -9,6 +9,7 @@ namespace MovieShopDAL
         private IRepository<Movie> movieRepository;
         private IRepository<Genre> genreRepository;
         private IRepository<Customer> customerRepository;
+        private IRepository<Order> orderRepository;
 
         public IRepository<Movie> MovieRepository
         {
@@ -42,6 +43,18 @@ namespace MovieShopDAL
                 {
                     return customerRepository == null ? customerRepository =
                     new CustomerRepository() : customerRepository;
+                }
+            }
+        }
+
+        public IRepository<Order> OrderRepository
+        {
+            get
+            {
+                using (var db = new MovieShopDBContext())
+                {
+                    return orderRepository == null ? orderRepository =
+                    new OrderRepository() : orderRepository;
                 }
             }
         }

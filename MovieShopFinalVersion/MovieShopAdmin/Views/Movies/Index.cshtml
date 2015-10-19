@@ -6,8 +6,13 @@
 <head>
     <style>
         .smallPic {
-            height: 120px;
-            width: 90px;
+            height: 150px;
+            width: 100px;
+        }
+
+        .trailer {
+            height: 150px;
+            width: 310px;
         }
     </style>
 </head>
@@ -29,14 +34,6 @@
                             @Html.DropDownList("GenreList", (SelectList)ViewBag.GenreList, "All", new { onchange = "javascript:this.form.submit()" })
                         </p>
                     }
-
-                    @*@using (Html.BeginForm())
-                        {
-                                    <p>
-                                        Price:
-                                        @Html.DropDownList("PriceList", (SelectList)ViewBag.PriceList, "All", new { onchange = "javascript:this.form.submit()" })
-                                    </p>
-                                }*@
                 </div>
             </div>
         </div>
@@ -77,14 +74,16 @@
 
             <tr>
                 <td>
-                    @if(item.ImageUrl == null)
+                    @if (item.ImageUrl.Count() < 1)
                     {
-                        <img src="/Content/Images/no.gif" class="smallPic" />
+                        <img src="/content/images/no.gif" class="smallPic" />
                     }
                     else
                     {
                         <img src="@item.ImageUrl" class="smallPic" />
                     }
+
+                    @*<img src="@item.ImageUrl" class="smallPic" />*@
 
                 </td>
                 <td>
@@ -97,7 +96,12 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TrailerUrl)
+                    <iframe src="@item.TrailerUrl"
+                            class="trailer"
+                            frameborder="0"
+                            allowfullscreen="true"
+                            autostart="false"
+                            allowscriptaccess="always"></iframe>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Genre.Name)

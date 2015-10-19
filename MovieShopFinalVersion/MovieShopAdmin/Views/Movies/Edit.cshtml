@@ -6,12 +6,9 @@
 
 <h2>Edit Movie</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-    @*Gem id og send videre*@
     @Html.HiddenFor(model => model.MovieId)
 
     <div class="form-horizontal">

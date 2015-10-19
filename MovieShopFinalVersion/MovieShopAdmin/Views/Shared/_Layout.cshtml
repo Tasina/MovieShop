@@ -1,12 +1,11 @@
 ﻿<!DOCTYPE html>
-<title>@ViewBag.Title - My Little Movie Shop</title>
+<title>@ViewBag.Title - Administration</title>
 <html>
 <header class="navbar navbar-bright navbar-fixed-top" role="banner">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/Content/MyContent/TopBar.css" />
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -52,7 +51,11 @@
 
     <div class="container panel-body">
         @RenderBody()
-        <footer style="border-color:black; border-top:groove">
+    </div>
+
+    <div>
+
+        <footer class="container panel-body" style="border-color:black; border-top:groove">
             <p class="right">&copy; @DateTime.Now.Year - Movie Shop</p>
         </footer>
     </div>
