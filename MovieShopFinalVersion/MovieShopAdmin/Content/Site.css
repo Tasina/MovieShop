@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('Heaven.jpg');
+    background-size: cover;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +24,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.table{
+    color:#000000;
+    border-color:#000000;
+    border-style:hidden;
+}
+
+

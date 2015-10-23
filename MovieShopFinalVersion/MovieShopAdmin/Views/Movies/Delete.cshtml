@@ -64,13 +64,9 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color col-md-offset-1 col-md-10">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary" })
         </div>
     }
-
-
-    <div>
-        <button class="btn btn-primary" style="margin-right:5px" onclick="window.location.href = '/Movies/Index'">Cancel</button>
-    </div>
 </div>

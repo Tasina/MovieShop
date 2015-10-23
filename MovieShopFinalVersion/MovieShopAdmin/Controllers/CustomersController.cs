@@ -1,6 +1,8 @@
 ﻿using MovieShopDAL;
 using MovieShopDAL.BE;
 using MovieShopDAL.Repositories;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace MovieShop.Controllers
@@ -40,13 +42,20 @@ namespace MovieShop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CustomerId,FirstName,LastName,StreetName,HouseNr,ZipCode,City,Email")] Customer customer)
         {
-            if (ModelState.IsValid)
+            if (!Validate(customer))
             {
-                custRepo.Add(customer);
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    custRepo.Add(customer);
+                    return RedirectToAction("Index");
+                }
+                return View(customer);
             }
 
-            return View(customer);
         }
 
         // GET: Customers/Edit/5
@@ -93,6 +102,13 @@ namespace MovieShop.Controllers
         {
             custRepo.Remove(id);
             return RedirectToAction("Index");
+        }
+
+        private bool Validate(Customer cus)
+        {
+            List<Customer> customers = custRepo.GetAll().ToList();
+            Customer customer = customers.Find(c => c.Email == cus.Email);
+            if (customer != null) { return false; } else { return true; }
         }
 
     }

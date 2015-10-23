@@ -54,20 +54,11 @@ namespace MovieShopUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MovieId,GenreId,Title,Year,Price,ImageUrl,TrailerUrl")] Movie movie, string Command)
         {
-            if (Command == "Create")
+            if (ModelState.IsValid)
             {
-
-                if (ModelState.IsValid)
-                {
-                    movieRepo.Add(movie);
-                    return RedirectToAction("Index");
-                }
-            }
-            if (Command == "Back")
-            {
+                movieRepo.Add(movie);
                 return RedirectToAction("Index");
             }
-
 
             ViewBag.GenreId = new SelectList(genreRepo.GetAll(), "GenreId", "Name", movie.Genre.GenreId);
             return View(movie);
